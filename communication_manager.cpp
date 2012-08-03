@@ -46,6 +46,8 @@ void CommunicationManager::sync()
 
     QString rsdn_host = settings.value("rsdn/host", "www.rsdn.ru").toString();
     int     rsdn_port = settings.value("rsdn/port", "80").toInt();
+    Q_UNUSED(rsdn_host);
+    Q_UNUSED(rsdn_port);
 
     // получение хранилища
     std::auto_ptr<IAStorage> storage(AStorageFactory::getStorage());
@@ -66,28 +68,38 @@ void CommunicationManager::startSync()
 
 void CommunicationManager::process_state_changed(int state)
 {
+    Q_UNUSED(state);
 }
 
 void CommunicationManager::process_data_read_progress(int done, int total)
 {
+    Q_UNUSED(done);
+    Q_UNUSED(total);
 }
 
 void CommunicationManager::process_data_send_progress(int done, int total)
 {
+    Q_UNUSED(done);
+    Q_UNUSED(total);
 }
 
 void CommunicationManager::process_response_header_received(const QHttpResponseHeader& resp)
 {
+    Q_UNUSED(resp);
 }
 
 void CommunicationManager::process_request_started(int id)
 {
+    Q_UNUSED(id);
 }
 
 void CommunicationManager::process_request_finished(int id, bool error)
 {
+    Q_UNUSED(id);
+    Q_UNUSED(error);
 }
 
 void CommunicationManager::process_ssl_errors(const QList<QSslError> &errors)
 {
+    Q_UNUSED(errors);
 }
