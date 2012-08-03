@@ -44,6 +44,7 @@ void Logger::logMessage(QtMsgType type, const char *msg)
 
     QFile outFile(m_logfileName);
     bool res = outFile.open(QIODevice::WriteOnly | QIODevice::Append);
+    Q_UNUSED(res);
     QTextStream ts(&outFile);
     ts << txt << endl;
 }
