@@ -86,21 +86,15 @@
 	#endif
 #endif
 
-#ifndef _MSC_VER
-	// возможность сжатия тел сообщений
-	#define AVALON_USE_ZLIB
-	#ifdef AVALON_USE_ZLIB
-		// for windows use http://www.winimage.com/zLibDll/index.html
-		#include <zlib.h>
-	#endif
+#ifdef AVALON_USE_ZLIB
+    // for windows use http://www.winimage.com/zLibDll/index.html
+    #include <zlib.h>
+#endif
 
-	// проверка орфографии
-	#define AVALON_USE_ASPELL
-	#ifdef AVALON_USE_ASPELL
-		// for windows use http://aspell.net/win32/
-		#include <aspell.h>
-		#include <QSyntaxHighlighter>
-	#endif
+#ifdef AVALON_USE_ASPELL
+    // for windows use http://aspell.net/win32/
+    #include <aspell.h>
+    #include <QSyntaxHighlighter>
 #endif
 
 /*!

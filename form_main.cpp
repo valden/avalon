@@ -1134,5 +1134,6 @@ void AFormMain::checkUpdate ()
 
 void AFormMain::on_sync_done(int withState)
 {
+    Q_UNUSED(withState);
     m_message_tree->selectByPath(&m_restorePath);
 }
