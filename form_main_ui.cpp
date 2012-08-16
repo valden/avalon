@@ -176,6 +176,9 @@ AFormMainUI::AFormMainUI () : QMainWindow ()
 	m_tool_bar_forward->setIcon(QIcon(":/icons/forward24.png"));
 	m_tool_bar_forward->setEnabled(false);
 
+    m_tool_bar->addSeparator();
+    m_tool_bar->addAction(m_menu_service_mark_all_as_read);
+
 	addToolBar(m_tool_bar);
 
 	//
