@@ -7,7 +7,7 @@ ASpellTextEdit::ASpellTextEdit (QWidget* parent) : QTextEdit (parent)
 {
 	m_spellchecker = NULL;
 
-	if (QSettings().value("ui/spellchecker", true).toInt() == true)
+    if (QSettings().value("ui/spellchecker", true).toBool() == true)
 		m_spellchecker = new ASpellChecker(document());
 }
 //----------------------------------------------------------------------------------------------
