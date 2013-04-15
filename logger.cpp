@@ -41,10 +41,8 @@ void Logger::logMessage(QtMsgType type, const char *msg)
         txt = QString("%1 : fatal: %2").arg(QTime::currentTime().toString(Qt::ISODate), msg);
         abort();
     }
-
     QFile outFile(m_logfileName);
     bool res = outFile.open(QIODevice::WriteOnly | QIODevice::Append);
-    Q_UNUSED(res);
     QTextStream ts(&outFile);
     ts << txt << endl;
 }
