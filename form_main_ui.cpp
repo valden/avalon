@@ -27,6 +27,7 @@ AFormMainUI::AFormMainUI () : QMainWindow ()
 	m_menu_file_exit = m_menu_file->addAction(QString::fromUtf8("Выход"));
 	m_menu_file_exit->setIcon(QIcon(":/icons/exit16.png"));
 	m_menu_file_exit->setMenuRole(QAction::QuitRole);
+    m_menu_file_exit->setShortcut(Qt::CTRL + Qt::Key_Q);
 
 	// меню "Вид"
 	m_menu_view_source = m_menu_view->addAction(QString::fromUtf8("Просмотр источника"));
