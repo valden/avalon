@@ -232,8 +232,10 @@ void FormRequest::process_data_read_progress (int done, int total)
 	else
 		setWindowTitle(QString::fromUtf8("HTTP - чтение ") + formatPrettyBytes(done));
 
-	m_progress_bar->setMaximum(total);
-	m_progress_bar->setValue(done);
+    if (total >= m_progress_bar->minimum())
+        m_progress_bar->setMaximum(total);
+    if (done >= m_progress_bar->minimum() && done <= m_progress_bar->maximum())
+        m_progress_bar->setValue(done);
 }
 //----------------------------------------------------------------------------------------------
 
@@ -241,8 +243,10 @@ void FormRequest::process_data_send_progress (int done, int total)
 {
 	setWindowTitle(QString::fromUtf8("HTTP - отправка ") + formatPrettyBytes(done) + "/" + formatPrettyBytes(total));
 
-	m_progress_bar->setMaximum(total);
-	m_progress_bar->setValue(done);
+    if (total >= m_progress_bar->minimum())
+        m_progress_bar->setMaximum(total);
+    if (done >= m_progress_bar->minimum() && done <= m_progress_bar->maximum())
+        m_progress_bar->setValue(done);
 }
 //----------------------------------------------------------------------------------------------
 
@@ -352,7 +356,8 @@ void FormRequest::process_state_changed (int state)
 
 void FormRequest::onProgress (int percent)
 {
-	m_progress_bar->setValue(percent);
+    if (percent >= m_progress_bar->minimum() && percent <= m_progress_bar->maximum())
+        m_progress_bar->setValue(percent);
 
 	QCoreApplication::processEvents();
 }
@@ -363,7 +368,8 @@ void FormRequest::onProgress (int percent, const QString& status)
 	if (status.length() > 0)
 		new QListWidgetItem(status, m_list_progress);
 
-	m_progress_bar->setValue(percent);
+    if (percent >= m_progress_bar->minimum() && percent <= m_progress_bar->maximum())
+        m_progress_bar->setValue(percent);
 
 	QCoreApplication::processEvents();
 }
